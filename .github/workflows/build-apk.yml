@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - 'GoogleTV_TouchMirror_v1_OneUpload.zip'
+      - 'GoogleTV_TouchMirror_v1_2_OneUpload.zip'
       - '.github/workflows/build-apk.yml'
 
 jobs:
@@ -55,9 +55,9 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          test -s GoogleTV_TouchMirror_v1_OneUpload.zip
+          test -s GoogleTV_TouchMirror_v1_2_OneUpload.zip
           mkdir -p mirror-kit
-          unzip -oq GoogleTV_TouchMirror_v1_OneUpload.zip -d mirror-kit
+          unzip -oq GoogleTV_TouchMirror_v1_2_OneUpload.zip -d mirror-kit
           test -s mirror-kit/patch/patch_tv.py
 
       - name: Get pinned Android scrcpy client
@@ -105,7 +105,7 @@ jobs:
       - name: Upload APK as artifact
         uses: actions/upload-artifact@v4
         with:
-          name: GoogleTV-TouchMirror-v1-debug-APK
+          name: GoogleTV-TouchMirror-v1_2-debug-APK
           path: upstream/app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
           retention-days: 14
